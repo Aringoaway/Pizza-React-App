@@ -10,7 +10,9 @@ function SortPopup() {
     }
 
     const handleOutsideClick = (e) => {
-        console.log(e);
+        if(!e.path.includes(sortRef.current)) {
+            setVisiblePopup(false);
+        }
     }
 
     useEffect(() => {
