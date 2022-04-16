@@ -8,7 +8,7 @@ function App() {
                 <div className="container">
                     <div className="content__top">
                         <Categories items={["Meat", "Vegetarian", "Grilled", "Spicy", "Covered"]}/>
-                        <SortPopup/>
+                        <SortPopup items={["popularity", "price", "alphabetically"]}/>
                     </div>
                     <h2 className="content__title">Все пиццы</h2>
                     <div className="content__items">
