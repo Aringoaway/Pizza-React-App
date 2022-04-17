@@ -1,6 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-function PizzaBlock({ name, imageUrl }) {
+function PizzaBlock({ name, imageUrl, price, }) {
+    const types = ["thin", "traditional"];
+    const [activeType, setActiveType] = useState(1);
+
+    const onSelectType = (index) => {
+        setActiveType(index)
+    }
+
     return(
         <div className="pizza-block">
             <img
@@ -11,18 +18,24 @@ function PizzaBlock({ name, imageUrl }) {
             <h4 className="pizza-block__title">{name}</h4>
             <div className="pizza-block__selector">
                 <ul>
-                    <li className="active">тонкое</li>
-                    <li>традиционное</li>
+                    {types.map((type,index) => (
+                        <li
+                            onClick={() => onSelectType(index)}
+                            className={activeType === index ? 'active' : ''}
+                        >
+                            {type}
+                        </li>
+                    ))}
                 </ul>
                 <ul>
-                    <li className="active">26 см.
+                    <li className="active">26 sm.
                     </li>
-                    <li>30 см.</li>
-                    <li>40 см.</li>
+                    <li>30 sm.</li>
+                    <li>40 sm.</li>
                 </ul>
             </div>
             <div className="pizza-block__bottom">
-                <div className="pizza-block__price">от 395 ₽</div>
+                <div className="pizza-block__price"> <small>from</small> {price} Kč</div>
                 <div className="button button--outline button--add">
                     <svg
                         width="12"
@@ -36,7 +49,7 @@ function PizzaBlock({ name, imageUrl }) {
                             fill="white"
                         />
                     </svg>
-                    <span>Добавить</span>
+                    <span>Add</span>
                     <i>2</i>
                 </div>
             </div>
