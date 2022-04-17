@@ -1,11 +1,17 @@
 import React, {useState} from 'react';
+import classNames from 'classnames'
 
-function PizzaBlock({ name, imageUrl, price, }) {
-    const types = ["thin", "traditional"];
-    const [activeType, setActiveType] = useState(1);
+function PizzaBlock({ name, imageUrl, price, types, sizes }) {
+    const availableTypes = ["thin", "traditional"];
+    const availableSizes = [26, 30, 40];
+    const [activeType, setActiveType] = useState(types[0]);
+    const [activeSize, setActiveSize] = useState(sizes[0]);
 
     const onSelectType = (index) => {
         setActiveType(index)
+    }
+    const onSelectSize = (index) => {
+        setActiveSize(index)
     }
 
     return(
@@ -18,20 +24,32 @@ function PizzaBlock({ name, imageUrl, price, }) {
             <h4 className="pizza-block__title">{name}</h4>
             <div className="pizza-block__selector">
                 <ul>
-                    {types.map((type,index) => (
+                    {availableTypes.map((type,index) => (
                         <li
                             onClick={() => onSelectType(index)}
-                            className={activeType === index ? 'active' : ''}
+                            className={classNames({
+                                active: activeType === index,
+                                disabled: !types.includes(index)
+                            })}
+                            key={type}
                         >
                             {type}
                         </li>
                     ))}
                 </ul>
                 <ul>
-                    <li className="active">26 sm.
-                    </li>
-                    <li>30 sm.</li>
-                    <li>40 sm.</li>
+                    {availableSizes.map((size,index) => (
+                        <li
+                            onClick={() => onSelectSize(index)}
+                            className={classNames({
+                                active: activeSize === index,
+                                disabled: !sizes.includes(size)
+                            })}
+                            key={size}
+                        >
+                            {size} sm.
+                        </li>
+                    ))}
                 </ul>
             </div>
             <div className="pizza-block__bottom">
