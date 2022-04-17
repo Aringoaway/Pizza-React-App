@@ -21,8 +21,8 @@ function App() {
             <Header/>
             <div className="content">
                 <Routes>
-                    <Route path="/" element={<Home/>} exact/>
-                    <Route path="/cart" element={<Cart/>} exact/>
+                    <Route path="/" exact element={<Home items={pizzas} />}/>
+                    <Route path="/cart" exact element={<Cart />}/>
                 </Routes>
             </div>
         </div>
