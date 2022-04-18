@@ -1,9 +1,12 @@
-import './App.css';
-import {Routes, Route} from "react-router-dom";
-import {Header} from './components';
-import {Home, Cart} from './pages';
 import {useEffect, useState} from "react";
 import axios from "axios";
+import {connect} from "react-redux";
+
+import './App.css';
+import {Header} from './components';
+import {Home, Cart} from './pages';
+import {Routes, Route} from "react-router-dom";
+import {setPizzas} from "./redux/action/pizzas";
 
 function App() {
     const [pizzas, setPizzas] = useState([]);
@@ -13,7 +16,6 @@ function App() {
         })
     }, []);
 
-    console.log(pizzas)
 
     return (
         <div className="wrapper">
@@ -28,4 +30,4 @@ function App() {
     );
 }
 
-export default App;
+export default connect()(App);
