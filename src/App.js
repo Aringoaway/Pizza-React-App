@@ -17,6 +17,7 @@ function App() {
             dispatch(setPizzas(data.pizzas));
         })
     },[]);
+
     return (
         <div className="wrapper">
             <Header/>
