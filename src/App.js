@@ -1,28 +1,34 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import {connect} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import './App.css';
-import {Header} from './components';
-import {Home, Cart} from './pages';
-import {Routes, Route} from "react-router-dom";
-import {setPizzas} from "./redux/action/pizzas";
+import { Header } from './components';
+import { Home, Cart } from './pages';
+import { Routes, Route } from "react-router-dom";
+import { setPizzas } from "./redux/action/pizzas";
+
 
 function App() {
-    const [pizzas, setPizzas] = useState([]);
+    const dispatch = useDispatch();
+    const { items } = useSelector(({ pizzas, filters }) => {
+        return {
+            items: pizzas.items,
+            sortBy: filters.sortBy
+        }
+    });
+
     useEffect(() => {
         axios.get('http://localhost:3000/db.json').then(({ data }) => {
-            setPizzas(data.pizzas);
+            dispatch(setPizzas(data.pizzas));
         })
-    }, []);
-
-
+    },[]);
     return (
         <div className="wrapper">
             <Header/>
             <div className="content">
                 <Routes>
-                    <Route path="/" exact element={<Home items={pizzas} />}/>
+                    <Route path="/" exact element={<Home items={items} />}/>
                     <Route path="/cart" exact element={<Cart />}/>
                 </Routes>
             </div>
@@ -30,4 +36,4 @@ function App() {
     );
 }
 
-export default connect()(App);
+export default (App);
