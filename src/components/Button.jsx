@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from 'classnames';
 import PropTypes from "prop-types";
-import PizzaBlock from "./PizzaBlock";
+import Index from "./PizzaBlock";
 
 
  function Button({onClick, className, outline, children}) {

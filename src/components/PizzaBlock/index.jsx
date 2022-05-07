@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
+// import ContentLoader from 'react-content-loader';
 import PropTypes from 'prop-types';
 import classNames from 'classnames'
 
+// import LoadingBlock from "./LoadingBlock";
 
-function PizzaBlock({ name, imageUrl, price, types, sizes }) {
+function PizzaBlock({ name, imageUrl, price, types, sizes, isLoading }) {
     const availableTypes = ["thin", "traditional"];
     const availableSizes = [26, 30, 40];
     const [activeType, setActiveType] = useState(types[0]);
