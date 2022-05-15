@@ -19,7 +19,7 @@ function Home() {
     const { category, sortBy } = useSelector(({ filters }) => filters);
 
     useEffect(() => {
-        dispatch(fetchPizzas());
+        dispatch(fetchPizzas(sortBy, category));
     },[category, sortBy]);
 
     const onSelectCategory = useCallback((index) => {
