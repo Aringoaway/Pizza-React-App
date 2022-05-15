@@ -33,7 +33,7 @@ function Home() {
                     activeCategory={category}
                     onClickCategory={onSelectCategory}
                     items={categoryNames}/>
-                <SortPopup items={sortItems}
+                <SortPopup activeSortType={sortBy} items={sortItems}
                 />
             </div>
             <h2 className="content__title">All pizzas</h2>
