@@ -1,21 +1,16 @@
-import React, {useState} from 'react';
+import React from 'react';
 import PropTypes from "prop-types";
-import PizzaBlock from "./PizzaBlock";
 
 const Categories = React.memo(function Categories({ activeCategory, items, onClickCategory }) {
-
-    const onSelectItem = (index) => {
-        onClickCategory(index);
-    }
 
     return(
         <div className="categories">
             <ul>
-                <li className={activeCategory === null ? 'active' : ''} onClick={() => onSelectItem(null)}>All</li>
+                <li className={activeCategory === null ? 'active' : ''} onClick={() => onClickCategory(null)}>All</li>
                 {items && items.map((name, index) =>
                     <li
                         className={activeCategory === index ? 'active' : ''}
-                        onClick={() => onSelectItem(index)}
+                        onClick={() => onClickCategory(index)}
                         key={`${name}_${index}`}>
                         {name}
                     </li>
