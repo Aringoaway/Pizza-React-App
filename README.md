@@ -20,7 +20,7 @@ Switch on the server to receive data, in another terminal window.\
 This will work on port [http://localhost:3001/pizzas](http://localhost:3001/pizzas).
 
 
-## What I learned
+## What I learned🌱
 
 1. React Redux
 2. Method [.reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce)
