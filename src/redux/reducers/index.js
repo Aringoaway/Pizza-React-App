@@ -4,9 +4,9 @@ import pizzas from './pizzas'
 import cart from './cart'
 
 const rootReducer = combineReducers({
-    filters,
-    pizzas,
-    cart
+	filters,
+	pizzas,
+	cart
 });
 
 export default rootReducer;
